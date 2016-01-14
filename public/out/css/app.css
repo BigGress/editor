@@ -28,7 +28,21 @@
       text-align: left; }
   .editorDiv .editorBody {
     border: 1px solid #000000;
-    height: 85%; }
+    min-height: 85%; }
+    .editorDiv .editorBody .imgBox {
+      min-width: 10%;
+      max-width: 60%;
+      position: relative; }
+      .editorDiv .editorBody .imgBox img {
+        width: 100%; }
+      .editorDiv .editorBody .imgBox .imgBoxRB {
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        cursor: nw-resize;
+        background: #000; }
 
 .colorBox {
   display: none; }

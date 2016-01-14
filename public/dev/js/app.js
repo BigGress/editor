@@ -113,7 +113,7 @@ var btnsEvent = {
     },
     //插入图片
     addPicture(){
-
+        var test = '1123';
     },
     //增加点击事件
     addClassName:function(){
@@ -149,19 +149,27 @@ var addBtn = function(option){
                 <div class="configColor">确认</div>
             </div>
         </button>`,
-        addPicture:`<button>添加图片</button>`
+        addPicture:`<button><label for="picture">添加图片 <input type="file" style="display: none;" onchange="onchangeImage(this)" id="picture"/></label></button>`
     }
 
     if(option==='all'){
         for(var i in arrBtn){
             $('header').innerHTML+=arrBtn[i];
         }
-        var x=0
+        var x=0;
         var btns = document.querySelectorAll('button');
         for(var a in btnsEvent){
             if(arrBtn.hasOwnProperty(a)){
-                btns[x].addEventListener('click',btnsEvent[a]);
-                x++
+                try{
+                    btns[x].addEventListener('click',btnsEvent[a]);
+                }catch(e){
+                    console.log(a)
+                    console.error(btns[x])
+                }
+                if((btns[x]).toString().match(/Button/)){
+                    btns[x].addEventListener('click',btnsEvent[a]);
+                }
+                x++;
             }
         }
     }
@@ -195,4 +203,54 @@ function startEditor(el){
     $(el).parentNode.innerHTML += htmls;
 
     return $('.editorDiv')
+}
+var imgtest= null;
+
+function onchangeImage(url){
+    var file = url.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function(){
+        var img = new Image();
+        img.src = reader.result;
+        $('.editorBody').appendChild(img);
+    };
+    reader.readAsDataURL(file);
+
+
+    //用拖拽来放大缩小图片...但是有bug...插入图片后接着输入文字会导致
+    //var file = url.files[0];
+    //console.log(file)
+    //var divBox = document.createElement('div'),
+    //    divRightBottom = document.createElement('div'),
+    //    br1 = document.createElement('br'),
+    //    br2 = document.createElement('br');
+    //$('.editorBody').appendChild(br1);
+    //divBox.className = 'imgBox';
+    //divRightBottom.className = 'imgBoxRB';
+    //divRightBottom.setAttribute('onmousedown','dragFn(this)');
+    //var img = document.createElement('img');
+    //var reader = new FileReader();
+    //divBox.appendChild(img);
+    //divBox.appendChild(divRightBottom);
+    //$('.editorBody').appendChild(divBox);
+    //$('.editorBody').appendChild(br2);
+    //reader.onloadend = function(){
+    //    img.src = reader.result;
+    //};
+    //reader.readAsDataURL(file);
+}
+
+function dragFn(el){
+    console.dir(el)
+    document.onmousemove = function(event){
+        var width = event.x;
+        var height = event.y;
+        el.parentNode.style.width = width+'px';
+    }
+    document.onmouseup = function(event){
+        console.log(this)
+        document.onmousemove = null;
+        document.onmouseup = null;
+    }
 }

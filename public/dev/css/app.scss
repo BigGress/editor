@@ -40,7 +40,28 @@
 
   .editorBody{
     border: 1px solid #000000;
-    height: 85%;
+    min-height: 85%;
+
+    //图片框
+    .imgBox{
+      min-width: 10%;
+      max-width: 60%;
+      position: relative;
+
+      img{
+        width: 100%;
+      }
+
+      .imgBoxRB{
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        cursor: nw-resize;
+        background: #000;
+      }
+    }
   }
 }
 

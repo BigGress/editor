@@ -25,9 +25,9 @@ var btnsEvent = {
     //改变字体大小
     changeFontsize(){
         var allLis = document.querySelectorAll('.fontSize li');
-
+        this.childNodes[1].style.top = this.offsetHeight+'px';
         if(this.childNodes[1].className.match(/show/)){
-            this.childNodes[1].className = this.childNodes[1].className.split(' show')[0]
+            this.childNodes[1].className = this.childNodes[1].className.split(' show')[0];
         }else{
             this.childNodes[1].className +=' show'
             for(let i=0;i<allLis.length;i++){
@@ -90,11 +90,20 @@ var btnsEvent = {
     },
     //改变字体颜色
     changeColor(event){
-        btnsEvent.addClassName.apply(this);
+        if(!this.className.match(/on/)){
+            this.className+=' on'
+        }
+        var button = this;
         $('.colorBox').className +=' show';
+        console.log(this)
+        $('.colorBox').style.top = this.offsetHeight+'px';
+        $('.colorBox').style.left = 0+'px';
 
-        $('.configColor').addEventListener('click',function(){
+        $('.configColor').addEventListener('click',function(event){
+            event.stopPropagation();
             if(this.previousSibling.previousSibling.value.match(/#/)){
+                console.log(button.className)
+                button.className = button.className.split(' on')[0]
                 this.parentNode.addEventListener('animationend', function() {
                     if(this.className.match(/hide/)){
                         this.className = this.className.split(' ')[0];

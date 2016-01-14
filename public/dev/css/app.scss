@@ -4,18 +4,51 @@
 }
 
 .editorDiv{
-  border: 1px solid #dddddd;
   width: 80%;
   margin: 3% auto;
+  padding: 0% 2%;
+  background: #eeeeee;
 
   header{
+
+    border-top: 1px solid #eeeeee;
+    border-left: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
+    padding: 0.5% 1.5%;
+
     button{
       position: relative;
+      border: 1px solid;
+      border-color: rgba(0, 0, 0, .1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.3);
+      background: -webkit-linear-gradient(to bottom,#ffffff,#e6e6e6);
+      background: -moz-linear-gradient(to bottom,#ffffff,#e6e6e6);
+      background: -o-linear-gradient(to bottom,#ffffff,#e6e6e6);
+      background: linear-gradient(to bottom,#ffffff,#e6e6e6);
+      padding: 0.4% 1%;
+      -webkit-transition: all .2s;
+      -moz-transition: all .2s;
+      -ms-transition: all .2s;
+      -o-transition: all .2s;
+      transition: all .2s;
+      outline: none;
+      -webkit-appearance: none;
+      -webkit-border-radius: 5%/10%;
+      -moz-border-radius: 5%/10%;
+      border-radius: 5%/10%;
+      font-weight: 700;
+      font-size: 1em;
+
+      &:active{
+        background: -webkit-linear-gradient(to bottom,#e6e6e6,#ffffff);
+        background: -moz-linear-gradient(to bottom,#e6e6e6,#ffffff);
+        background: -o-linear-gradient(to bottom,#e6e6e6,#ffffff);
+        background: linear-gradient(to bottom,#e6e6e6,#ffffff);
+      }
+
       .fontSize{
         display: none;
         width: 100%;
         position: absolute;
-        top: 19px;
         left: 0;
         list-style: none;
         background: #ffffff;
@@ -27,20 +60,31 @@
         &.show{
           display: block;
         }
+        & li{
+          color: #000000;
+        }
         & li:hover{
           background: #2578b5;
         }
       }
 
-      &.colorBtn{
-        text-align: left;
+      &.on{
+        color: #ffffff;
+        background: -webkit-linear-gradient(to bottom,#58B2DC,#3A8FB7);
+        background: -moz-linear-gradient(to bottom,#58B2DC,#3A8FB7);
+        background: -o-linear-gradient(to bottom,#58B2DC,#3A8FB7);
+        background: linear-gradient(to bottom,#58B2DC,#3A8FB7);
       }
     }
   }
 
   .editorBody{
-    border: 1px solid #000000;
-    min-height: 85%;
+    border: 1px solid #dedede;
+    min-height: 65%;
+    background: #ffffff;
+    &:focus{
+      outline: none;
+    }
 
     //图片框
     .imgBox{
@@ -67,6 +111,49 @@
 
 .colorBox{
   display: none;
+  color: #666;
+  border: 1px solid #dddddd;
+  padding: 5% 15%;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-border-radius: 3%/6%;
+  -moz-border-radius: 3%/6%;
+  border-radius: 3%/6%;
+  text-align: left;
+
+  input{
+    margin: 6% 0;
+    outline: none;
+    border: 1px solid #dddddd;
+    outline: none;
+    padding: 1% 0%;
+  }
+
+  .configColor{
+    width: 20%;
+    margin: 0 auto;
+    border: 1px solid #dedede;
+    display: inline;
+    padding: 1% 1%;
+    -webkit-border-radius: 5%/10%;
+    -moz-border-radius: 5%/10%;
+    border-radius: 5%/10%;
+    background: -webkit-linear-gradient(to bottom,#e6e6e6,#ffffff);
+    background: -moz-linear-gradient(to bottom,#e6e6e6,#ffffff);
+    background: -o-linear-gradient(to bottom,#e6e6e6,#ffffff);
+    background: linear-gradient(to bottom,#e6e6e6,#ffffff);
+    &:active{
+      color: #ffffff;
+      background: -webkit-linear-gradient(to bottom,#58B2DC,#3A8FB7);
+      background: -moz-linear-gradient(to bottom,#58B2DC,#3A8FB7);
+      background: -o-linear-gradient(to bottom,#58B2DC,#3A8FB7);
+      background: linear-gradient(to bottom,#58B2DC,#3A8FB7);
+    }
+  }
+
   &.show{
     display: block;
     background: #ffffff;
